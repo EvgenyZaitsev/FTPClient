@@ -15,11 +15,11 @@ namespace FTPClient
             this.login = login;
             this.password = password;
         }
-        public string getLogin()
+        public string GetLogin()
         {
             return login;
         }
-        public string getPassword()
+        public string GetPassword()
         {
             return password;
         }

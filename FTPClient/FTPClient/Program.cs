@@ -36,7 +36,7 @@ namespace FTPClient
                     Console.WriteLine("Trying to connect to " + host + "with login " + login + " and password " + password + ".");
                     break;
             }
-//            host = "ftp://ftp.mccme.ru";
+//            host = "ftp://home.dimonius.ru";
             string rootHost = host;
             Client client = new Client(login, password);
             FTP ftp = new FTP(host, client);            
@@ -44,8 +44,8 @@ namespace FTPClient
             Console.WriteLine("Type /exit to exit program.");
             Console.WriteLine("Type /root to go to root folder.");
             Console.WriteLine();
-            ArrayList al = ftp.getList();
-            foreach (string s in al)
+            ArrayList listOfFiles = ftp.GetListOfFiles();
+            foreach (string s in listOfFiles)
             {
                 Console.WriteLine(s);
             }
@@ -64,7 +64,7 @@ namespace FTPClient
                         ftp = new FTP(host, client);
                     }
                 else {
-                    if (ftp.download(choise))
+                    if (ftp.Download(choise))
                     {
                         Console.WriteLine("File succesfully downloaded.");
                     }
@@ -74,8 +74,8 @@ namespace FTPClient
                         ftp = new FTP(host, client);
                         }
                     }
-                al = ftp.getList();
-                foreach (string s in al)
+                listOfFiles = ftp.GetListOfFiles();
+                foreach (string s in listOfFiles)
                 {
                     Console.WriteLine(s);
                 }

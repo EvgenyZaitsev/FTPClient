@@ -25,12 +25,12 @@ namespace FTPClient
             this.client = client;
         }
         
-        public bool download(string fileName)
+        public bool Download(string fileName)
         {
             try
             {
                 ftpRequest = (FtpWebRequest)FtpWebRequest.Create(host + "/" + fileName);
-                ftpRequest.Credentials = new NetworkCredential(client.getLogin(), client.getPassword());
+                ftpRequest.Credentials = new NetworkCredential(client.GetLogin(), client.GetPassword());
                 ftpRequest.Method = WebRequestMethods.Ftp.DownloadFile;
                 ftpResponse = (FtpWebResponse)ftpRequest.GetResponse();
                 ftpStream = ftpResponse.GetResponseStream();
@@ -61,13 +61,13 @@ namespace FTPClient
             return true;
         }
 
-        public ArrayList getList()
+        public ArrayList GetListOfFiles()
         {
             try
             {
                 ArrayList al = new ArrayList();
                 ftpRequest = (FtpWebRequest)FtpWebRequest.Create(host);
-                ftpRequest.Credentials = new NetworkCredential(client.getLogin(), client.getPassword());
+                ftpRequest.Credentials = new NetworkCredential(client.GetLogin(), client.GetPassword());
                 ftpRequest.Method = WebRequestMethods.Ftp.ListDirectory;
                 ftpResponse = (FtpWebResponse)ftpRequest.GetResponse();
                 ftpStream = ftpResponse.GetResponseStream();
@@ -93,7 +93,6 @@ namespace FTPClient
             {
                 Console.WriteLine(ex.ToString());
             }
-            /* Return an Empty string Array if an Exception Occurs */
             return null;
         }
     }
