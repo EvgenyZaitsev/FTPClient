@@ -4,17 +4,15 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{1DC0B644-463D-4CC7-88B3-B381839A2DAE}</ProjectGuid>
-    <OutputType>Exe</OutputType>
+    <ProjectGuid>{FB2C0C92-4FE9-44BF-8AFA-80A98B628722}</ProjectGuid>
+    <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>HW_4</RootNamespace>
-    <AssemblyName>HW_4</AssemblyName>
+    <RootNamespace>HW_4_5</RootNamespace>
+    <AssemblyName>HW_4_5</AssemblyName>
     <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
-    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
-    <PlatformTarget>AnyCPU</PlatformTarget>
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
@@ -24,7 +22,6 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
-    <PlatformTarget>AnyCPU</PlatformTarget>
     <DebugType>pdbonly</DebugType>
     <Optimize>true</Optimize>
     <OutputPath>bin\Release\</OutputPath>
@@ -35,7 +32,6 @@
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Core" />
-    <Reference Include="System.Numerics" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -44,33 +40,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="App.config" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\HW_4_1\HW_4_1.csproj">
-      <Project>{786b3526-1da0-40e1-90d2-dab68b4a8e03}</Project>
-      <Name>HW_4_1</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\HW_4_2\HW_4_2.csproj">
-      <Project>{64f69313-49a2-41d8-852d-9bbad45e411c}</Project>
-      <Name>HW_4_2</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\HW_4_3\HW_4_3.csproj">
-      <Project>{c71ac5e7-18f9-4c6d-b301-dbf515b2caf3}</Project>
-      <Name>HW_4_3</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\HW_4_4\HW_4_4.csproj">
-      <Project>{c0afc3e3-fc33-4bae-a092-e92e728f7bd5}</Project>
-      <Name>HW_4_4</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\HW_4_5\HW_4_5.csproj">
-      <Project>{fb2c0c92-4fe9-44bf-8afa-80a98b628722}</Project>
-      <Name>HW_4_5</Name>
-    </ProjectReference>
+    <Compile Include="Rectangles.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
