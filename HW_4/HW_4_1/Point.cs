@@ -8,22 +8,33 @@ namespace HW_4_1
 {
     public class Point
     {
+        private double x;
+        private double y;
+
         public Point()
         {
-            this.X = 0.0;
-            this.Y = 0.0;
+            x = 0.0;
+            y = 0.0;
         }
         public Point(double x, double y)
         {
-            this.X = x;
-            this.Y = y;
+            this.x = x;
+            this.y = y;
         }
-        public double X { set; get; }
-        public double Y { set; get; }
+        public double X
+        {
+            set { x = value; }
+            get { return x; }
+        }
+        public double Y
+        {
+            set { y = value; }
+            get { return y; }
+        }
         public override string ToString()
         {
             string s;
-            s = "(" + this.X.ToString("0.00") + ", " + this.Y.ToString("0.00") + ")";
+            s = "(" + x.ToString("0.00") + ", " + x.ToString("0.00") + ")";
             return s;
         }
         public bool Equals(Point p)
@@ -33,16 +44,17 @@ namespace HW_4_1
                 return false;
             }
             
-            return (this.X == p.X) && (this.Y == p.Y);
+            return (x == p.x) && (y == p.y);
         }
         public override bool Equals(object obj)
         {
+            // If parameter cannot be cast to ThreeDPoint return false:
             Point p = obj as Point;
             if ((object)p == null)
             {
                 return false;
             }
-            return (this.X == p.X) && (this.Y == p.Y);
+            return (x == p.x) && (y == p.y);
         }
     }
 }

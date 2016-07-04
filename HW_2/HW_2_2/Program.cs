@@ -18,7 +18,7 @@ namespace HW_2
         }
         static void DoSomeMagic()
         {
-            Text text = new Text();
+            WorkWithText text = new WorkWithText();
             text.Read();
             text.SetType();
             text.PrintInteger();

@@ -50,6 +50,7 @@ namespace HW_3_4
                 Matrix matrix = readMatrix(path);
                 matrix.MultiplyMatrix();
                 matrix.PrintMatrix();
+                Console.WriteLine("Press any key to exit.");
             }
             Console.ReadKey();
         }

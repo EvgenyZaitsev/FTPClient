@@ -8,8 +8,9 @@ namespace HW_2
 {
     class Current_Element
     {
-        string Element;
-        string TypeOfElement;
+        string Element { get; set; }
+        string TypeOfElement { get; set; }
+
         public Current_Element(string element, string type)
         {
             this.Element = element;
@@ -18,22 +19,6 @@ namespace HW_2
         public void Print()
         {
             Console.WriteLine(TypeOfElement + " " + Element);
-        }
-        public string GetElement()
-        {
-            return Element;
-        }
-        public void SetElement(string Element)
-        {
-            this.Element = Element;
-        }
-        public string GetTypeOfElement()
-        {
-            return TypeOfElement;
-        }
-        public void SetType(string Type)
-        {
-            this.TypeOfElement = Type;
         }
     }
 }

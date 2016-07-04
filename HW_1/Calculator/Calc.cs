@@ -8,21 +8,21 @@ namespace Calculator
 {
     public class Calc
     {
-        public int Sum(int a, int b)
+        public double Sum(double a, double b)
         {
             return a + b;
         }
-        public int Subtraction(int a, int b)
+        public double Subtraction(double a, double b)
         {
             return a - b;
         }
-        public double Multiply(int a, int b)
+        public double Multiply(double a, double b)
         {
-            return (double)a * (double)b;
+            return a * b;
         }
-        public double Divide(int a, int b)
+        public double Divide(double a, double b)
         {
-            return (double)a / (double)b;
+            return a / b;
         }
         
 

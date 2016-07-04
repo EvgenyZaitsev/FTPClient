@@ -5,29 +5,27 @@ namespace HW_4_2
 {
     public class FibAndFact
     {
+        private int index;
 
         public FibAndFact(int index)
         {
-            this.Index = index;
+            this.index = index;
         }
-        public int Index { get; set; }
         public double Fib()
         {
             double fib;
-            double d1 = (1 + Math.Sqrt(5)) / 2;
-            double d2 = (1 - Math.Sqrt(5)) / 2;
-            fib = ((Math.Pow(d1, this.Index)) - Math.Pow(d2, this.Index)) / Math.Sqrt(5);
+            fib = ((Math.Pow((1 + Math.Sqrt(5)) / 2, (double)index)) - Math.Pow((1 - Math.Sqrt(5)) / 2, (double)index)) / Math.Sqrt(5);
             return fib;
         }
         public BigInteger FactTree()
         {
-            if (this.Index < 0)
+            if (index < 0)
                 return 0;
-            if (this.Index == 0)
+            if (index == 0)
                 return 1;
-            if (this.Index == 1 || this.Index == 2)
-                return this.Index;
-            return ProdTree(2, this.Index);
+            if (index == 1 || index == 2)
+                return index;
+            return ProdTree(2, index);
         }
         static BigInteger ProdTree(int l, int r)
         {

@@ -13,10 +13,10 @@ namespace HW_1
         {
             bool isConfiguration;
             bool isCalculator;
-            int a;
-            int b;
-            int sum;
-            int subtraction;
+            double a;
+            double b;
+            double sum;
+            double subtraction;
             double multiply;
             double divide;
 
@@ -25,10 +25,8 @@ namespace HW_1
             isConfiguration = setConfig(choiceConfig);
             if (isConfiguration)
             {
-                //a = Int32.Parse(ConfigurationManager.AppSettings["firstNumber"]);
-                //b = Int32.Parse(ConfigurationManager.AppSettings["secondNumber"]);
-                a = Int32.Parse(Data.firstNumber);
-                b = Int32.Parse(Data.secondNumber);
+                a = Double.Parse(Data.firstNumber);
+                b = Double.Parse(Data.secondNumber);
                 Console.WriteLine($"Your numbers are {a} and {b}");
                 string choice = ConfigurationManager.AppSettings["useCalculator"];
                 isCalculator = setCalculator(choice);
@@ -36,9 +34,9 @@ namespace HW_1
             else
             {
                 Console.WriteLine("Enter first number");
-                a = Int32.Parse(Console.ReadLine());
+                a = ReadDouble();
                 Console.WriteLine("Enter second number");
-                b = Int32.Parse(Console.ReadLine());
+                b = ReadDouble();
                 Console.WriteLine("Choose one: Use own methods (type 1) or use Calculator library methods (type 2)");
                 string choiceCalc = Console.ReadLine();
                 isCalculator = setCalculator(choiceCalc);
@@ -68,21 +66,21 @@ namespace HW_1
             Console.ReadKey();
         }
 
-        static int Sum (int a, int b)
+        static double Sum (double a, double b)
         {
             return a + b;
         }
-        static int Subtraction(int a, int b)
+        static double Subtraction(double a, double b)
         {
             return a - b;
         }
-        static double Multiply(int a, int b)
+        static double Multiply(double a, double b)
         {
-            return (double)a * (double)b;
+            return a * b;
         }
-        static double Divide(int a, int b)
+        static double Divide(double a, double b)
         {
-            return (double)a / (double)b;
+            return a / b;
         }
         static bool setCalculator(string choice)
         {
@@ -96,7 +94,7 @@ namespace HW_1
             }
             else
             {
-                Console.WriteLine("Oops, something went wrong. Maybe, you made incorrect input. Try again");
+                Console.WriteLine("Oops, something went wrong. Maybe, you made incorrect input. Try again later.");
                 Environment.Exit(-1);
                 return false;
             }
@@ -113,9 +111,24 @@ namespace HW_1
             }
             else
             {
-                Console.WriteLine("Oops, something went wrong. Maybe, you made incorrect input. Try again");
+                Console.WriteLine("Oops, something went wrong. Maybe, you made incorrect input. Try again later.");
                 Environment.Exit(-1);
                 return false;
+            }
+        }
+        static double ReadDouble()
+        {
+            double number;
+            while (true)
+            {
+                if (!double.TryParse(Console.ReadLine(), out number))
+                {
+                    Console.WriteLine("Please, enter valid number");
+                }
+                else
+                {
+                    return number;
+                }
             }
         }
     }

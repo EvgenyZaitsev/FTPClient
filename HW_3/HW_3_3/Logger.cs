@@ -5,10 +5,10 @@ namespace HW_3_3
 {
     public class Logger
     {
-        private string path;
+        private string Path { get; set; }
         public Logger(string path)
         {
-            this.path = path;
+            this.Path = path;
         }
         public void Log(Linear l)
         {
@@ -18,14 +18,14 @@ namespace HW_3_3
             if (l.B < 0)
                 log += l.A.ToString("0.00") + "x - " + Math.Abs(l.B).ToString("0.00") + " = 0  " + l.Solve + "\r\n";
             Console.WriteLine(log);
-            if (File.Exists(path))
+            if (File.Exists(this.Path))
             {
-                File.AppendAllText(path, log);
+                File.AppendAllText(this.Path, log);
             }
             else
             {
-                File.Create(path);
-                File.AppendAllText(path, log);
+                File.Create(this.Path);
+                File.AppendAllText(this.Path, log);
             }
         }
         public void Log(Quadratic q)
@@ -47,14 +47,14 @@ namespace HW_3_3
                     log += q.A.ToString("0.00") + "x^2 - " + Math.Abs(q.B).ToString("0.00") + "x - " + Math.Abs(q.C).ToString("0.00") + " = 0  " + q.Solve + "\r\n";
             }
             Console.WriteLine(log);
-            if (File.Exists(path))
+            if (File.Exists(this.Path))
             {
-                File.AppendAllText(path, log);
+                File.AppendAllText(this.Path, log);
             }
             else
             {
-                File.Create(path);
-                File.AppendAllText(path, log);
+                File.Create(this.Path);
+                File.AppendAllText(this.Path, log);
             }
         }
         public void LogWrong(string a, string b)
@@ -62,14 +62,14 @@ namespace HW_3_3
             string log = "Linear     ";
             log += "Wrong data ";
             log += a + " " + b + "\r\n";
-            if (File.Exists(path))
+            if (File.Exists(this.Path))
             {
-                File.AppendAllText(path, log);
+                File.AppendAllText(this.Path, log);
             }
             else
             {
-                File.Create(path);
-                File.AppendAllText(path, log);
+                File.Create(this.Path);
+                File.AppendAllText(this.Path, log);
             }
         }
         public void LogWrong(string a, string b, string c)
@@ -77,14 +77,14 @@ namespace HW_3_3
             string log = "Quadratic  ";
             log += "Wrong data ";
             log += a + " " + b + " " + c + "\r\n";
-            if (File.Exists(path))
+            if (File.Exists(this.Path))
             {
-                File.AppendAllText(path, log);
+                File.AppendAllText(this.Path, log);
             }
             else
             {
-                File.Create(path);
-                File.AppendAllText(path, log);
+                File.Create(this.Path);
+                File.AppendAllText(this.Path, log);
             }
         }
     }

@@ -19,7 +19,7 @@ namespace HW_2
         }
         static void DoSomeMagic(string path)
         {
-            Text text = new Text();
+            WorkWithText text = new WorkWithText();
             text.Initiate(path);
             text.Split();
             text.ToLowCase();
