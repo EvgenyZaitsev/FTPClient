@@ -8,33 +8,24 @@ namespace HW_4_1
 {
     public class Point
     {
-        private double x;
-        private double y;
+        public double X { get; set; }
+        public double Y { get; set; }
 
         public Point()
         {
-            x = 0.0;
-            y = 0.0;
+            this.X = 0.0;
+            this.Y = 0.0;
         }
         public Point(double x, double y)
         {
-            this.x = x;
-            this.y = y;
+            this.X = x;
+            this.Y = y;
         }
-        public double X
-        {
-            set { x = value; }
-            get { return x; }
-        }
-        public double Y
-        {
-            set { y = value; }
-            get { return y; }
-        }
+        
         public override string ToString()
         {
             string s;
-            s = "(" + x.ToString("0.00") + ", " + x.ToString("0.00") + ")";
+            s = "(" + this.X.ToString("0.00") + ", " + this.Y.ToString("0.00") + ")";
             return s;
         }
         public bool Equals(Point p)
@@ -44,7 +35,7 @@ namespace HW_4_1
                 return false;
             }
             
-            return (x == p.x) && (y == p.y);
+            return (this.X == p.X) && (this.Y == p.Y);
         }
         public override bool Equals(object obj)
         {
@@ -54,7 +45,11 @@ namespace HW_4_1
             {
                 return false;
             }
-            return (x == p.x) && (y == p.y);
+            return (this.X == p.X) && (this.Y == p.Y);
+        }
+        public override int GetHashCode()
+        {
+            return this.X.GetHashCode() ^ this.Y.GetHashCode();
         }
     }
 }

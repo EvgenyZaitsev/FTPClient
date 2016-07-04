@@ -27,7 +27,7 @@ namespace HW_4_5
             int verticalRectangles = (int)(HeightOne / HeightTwo);
             int horizontalRectangles = (int)(WidthOne / WidthTwo);
             int totalVertical = verticalRectangles * horizontalRectangles;
-/////
+
             double lostVerticalSpace = HeightOne - verticalRectangles * HeightTwo;
             int lostVerticalRectanglesV = (int)(lostVerticalSpace / WidthTwo);
             int lostHorizontalRectanglesV = (int)(WidthOne / HeightTwo);
