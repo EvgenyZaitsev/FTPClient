@@ -6,10 +6,10 @@ using System.Threading.Tasks;
 
 namespace HW_2
 {
-    class Current_Element
+    public class Current_Element
     {
-        string Element { get; set; }
-        string TypeOfElement { get; set; }
+        public string Element { get; set; }
+        public string TypeOfElement { get; set; }
 
         public Current_Element(string element, string type)
         {

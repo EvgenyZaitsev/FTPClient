@@ -11,7 +11,7 @@ namespace HW_2
         static void Main(string[] args)
         {
             Console.WriteLine("Enter some data (numbers, strings).");
-            Console.WriteLine("If you don't want to enter data anymore, tape /e");
+            Console.WriteLine("If you don't want to enter data anymore, type /e");
             DoSomeMagic();
             Console.WriteLine("Press any key to exit.");
             Console.ReadKey();

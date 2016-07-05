@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace HW_2
 {
-    class WorkWithText
+    public class WorkWithText
     {
         public List<string> Data { get; set; }
         public List<Current_Element> DataWithType { get; set; }
@@ -55,7 +55,7 @@ namespace HW_2
             int counter = 0;
             foreach (Current_Element ce in this.DataWithType)
             {
-                if (ce.GetTypeOfElement() == "Integer")
+                if (ce.TypeOfElement == "Integer")
                 {
                     counter++;
                 }
@@ -67,7 +67,7 @@ namespace HW_2
             int counter = 0;
             foreach (Current_Element ce in this.DataWithType)
             {
-                if (ce.GetTypeOfElement() == "Double")
+                if (ce.TypeOfElement == "Double")
                 {
                     counter++;
                 }
@@ -80,9 +80,9 @@ namespace HW_2
             int i = 0;
             foreach (Current_Element ce in this.DataWithType)
             {
-                if (ce.GetTypeOfElement() == "Integer")
+                if (ce.TypeOfElement == "Integer")
                 {
-                    Console.WriteLine(ce.GetElement().PadLeft(20));
+                    Console.WriteLine(ce.Element.PadLeft(20));
                     i++;
                 }
             }
@@ -98,12 +98,12 @@ namespace HW_2
             Console.WriteLine("Double numbers:");
             foreach (Current_Element ce in this.DataWithType)
             {
-                if (ce.GetTypeOfElement() == "Double")
+                if (ce.TypeOfElement == "Double")
                 {
-                    if (ce.GetElement().IndexOf('.') != -1)
-                        Console.WriteLine(ce.GetElement().Substring(0, Math.Min(ce.GetElement().IndexOf(".") + 2, ce.GetElement().Length)).PadLeft(20));
+                    if (ce.Element.IndexOf('.') != -1)
+                        Console.WriteLine(ce.Element.Substring(0, Math.Min(ce.Element.IndexOf(".") + 2, ce.Element.Length)).PadLeft(20));
                     else
-                        Console.WriteLine(ce.GetElement().PadLeft(20));
+                        Console.WriteLine(ce.Element.PadLeft(20));
                     i++;
                 }
             }
@@ -119,9 +119,9 @@ namespace HW_2
             List<string> strings = new List<string>();
             foreach (Current_Element ce in this.DataWithType)
             {
-                if (ce.GetTypeOfElement() == "String")
+                if (ce.TypeOfElement == "String")
                 {
-                    strings.Add(ce.GetElement());
+                    strings.Add(ce.Element);
                 }
             }
             strings.Sort(CompareByLength);
@@ -137,9 +137,9 @@ namespace HW_2
             int sum = 0;
             foreach (Current_Element ce in this.DataWithType)
             {
-                if (ce.GetTypeOfElement() == "Integer")
+                if (ce.TypeOfElement == "Integer")
                 {
-                    sum += Int32.Parse(ce.GetElement());
+                    sum += Int32.Parse(ce.Element);
                 }
             }
             return (double)sum / (double)counter;
@@ -150,9 +150,9 @@ namespace HW_2
             double sum = 0;
             foreach (Current_Element ce in this.DataWithType)
             {
-                if (ce.GetTypeOfElement() == "Double")
+                if (ce.TypeOfElement == "Double")
                 {
-                    sum += Double.Parse(ce.GetElement());
+                    sum += Double.Parse(ce.Element);
                 }
             }
             return (double)sum / (double)counter;
