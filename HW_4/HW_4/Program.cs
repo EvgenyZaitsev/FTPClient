@@ -54,7 +54,7 @@ namespace HW_4
              {
                 Console.WriteLine($"Index is {faf[i].Index}.");
                 Console.WriteLine($"Factorial is {faf[i].FactTree()}.");
-                Console.WriteLine($"Fibonacci number is {faf[i].Fib().ToString("0.")}");
+                Console.WriteLine($"Fibonacci number is {faf[i].CalculateFibonnachi().ToString("0.")}.");
                 Console.WriteLine();
                 Console.WriteLine();
                 Console.WriteLine();
@@ -75,7 +75,7 @@ namespace HW_4
         static void WorkWithRectangles()
         {
             Rectangles[] rectangles = new Rectangles[8];
-            rectangles[0] = new Rectangles(11, 12, 2, 3);
+            rectangles[0] = new Rectangles(2, 2, 3, 1);
             rectangles[1] = new Rectangles(12, 11, 2, 3);
             rectangles[2] = new Rectangles(11, 12, 3, 2);
             rectangles[3] = new Rectangles(12, 11, 3, 2);

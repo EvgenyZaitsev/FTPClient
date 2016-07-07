@@ -11,13 +11,32 @@ namespace HW_4_2
         {
             this.Index = index;
         }
-        public double Fib()
+/*        public double Fib()
         {
             double fib;
             double d1 = (1 + Math.Sqrt(5)) / 2;
             double d2 = (1 - Math.Sqrt(5)) / 2;
             fib = ((Math.Pow(d1, this.Index)) - Math.Pow(d2, this.Index)) / Math.Sqrt(5);
             return fib;
+        }*/
+        public BigInteger CalculateFibonnachi()
+        {
+            BigInteger a = BigInteger.Zero;
+            BigInteger b = BigInteger.One;
+            for (int i = 31; i >= 0; i--)
+            {
+                BigInteger d = a * (b * 2 - a);
+                BigInteger e = a * a + b * b;
+                a = d;
+                b = e;
+                if (((this.Index >> i) & 1) != 0)
+                {
+                    BigInteger c = a + b;
+                    a = b;
+                    b = c;
+                }
+            }
+            return a;
         }
         public BigInteger FactTree()
          {

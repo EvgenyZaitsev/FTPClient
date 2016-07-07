@@ -11,9 +11,9 @@ namespace HW_5
         {
             this.Path = path;
         }
-        public void CheckList()
+        public void CheckList(int n)
         {
-            for (int i = 0; i < 4; i++)
+            for (int i = 0; i < n; i++)
             {
                 WorkWithList wwl = new WorkWithList();
                 int amount = (int)Math.Pow(10, i + 3);
@@ -30,9 +30,9 @@ namespace HW_5
                 log.Log("List", llt, this.Path);
             }
         }
-        public void CheckLinkedList()
+        public void CheckLinkedList(int n)
         {
-            for (int i = 0; i < 4; i++)
+            for (int i = 0; i < n; i++)
             {
                 WorkWithLinkedList wwll = new WorkWithLinkedList();
                 int amount = (int)Math.Pow(10, i + 3);
@@ -49,10 +49,10 @@ namespace HW_5
                 log.Log("Linked List", llt, this.Path);
             }
         }
-        public void CheckDictionary()
+        public void CheckDictionary(int n)
         {
             
-            for (int i = 0; i < 4; i++)
+            for (int i = 0; i < n; i++)
             {
                 List<List<Timer>> llt = new List<List<Timer>>();
                 Logger log = new Logger();
@@ -69,10 +69,10 @@ namespace HW_5
                 log.Log("Dictionary", llt, this.Path);
             }
         }
-        public void CheckSortedDictionary()
+        public void CheckSortedDictionary(int n)
         {
             
-            for (int i = 0; i < 4; i++)
+            for (int i = 0; i < n; i++)
             {
                 WorkWithSortedDictionary wwsd = new WorkWithSortedDictionary();
                 int amount = (int)Math.Pow(10, i + 3);
@@ -89,9 +89,9 @@ namespace HW_5
                 log.Log("Sorted Dictionary", llt, this.Path);
             }
         }
-        public void CheckQueue()
+        public void CheckQueue(int n)
         {
-            for (int i = 0; i < 4; i++)
+            for (int i = 0; i < n; i++)
             {
                 WorkWithQueue wwq = new WorkWithQueue();
                 int amount = (int)Math.Pow(10, i + 3);
@@ -108,9 +108,9 @@ namespace HW_5
                 log.Log("Queue", llt, this.Path);
             }
         }
-        public void CheckStack()
+        public void CheckStack(int n)
         {
-            for (int i = 0; i < 4; i++)
+            for (int i = 0; i < n; i++)
             {
                 WorkWithStack wws = new WorkWithStack();
                 int amount = (int)Math.Pow(10, i + 3);
@@ -127,9 +127,9 @@ namespace HW_5
                 log.Log("Stack", llt, this.Path);
             }
         }
-        public void CheckSortedSet()
+        public void CheckSortedSet(int n)
         {
-            for (int i = 0; i < 4; i++)
+            for (int i = 0; i < n; i++)
             {
                 WorkWithSortedSet wwss = new WorkWithSortedSet();
                 int amount = (int)Math.Pow(10, i + 3);

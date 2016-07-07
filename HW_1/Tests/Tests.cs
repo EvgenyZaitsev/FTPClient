@@ -9,37 +9,37 @@ namespace Tests
         public void SumTest()
         {
             Calc c = new Calc();
-            int a = 10;
-            int b = 45;
-            int sum = c.Sum(a, b);
+            double a = 10;
+            double b = 45;
+            double sum = c.Sum(a, b);
             Assert.AreEqual(a + b, sum);
         }
         [TestMethod]
         public void DivideTest()
         {
             Calc c = new Calc();
-            int a = 10;
-            int b = 45;
+            double a = 10;
+            double b = 45;
             double div = c.Divide(a, b);
-            Assert.AreEqual((double)a / (double)b, div);
+            Assert.AreEqual(a / b, div);
         }
         [TestMethod]
         public void SubtractionTest()
         {
             Calc c = new Calc();
-            int a = 10;
-            int b = 45;
-            int sub = c.Subtraction(a, b);
+            double a = 10;
+            double b = 45;
+            double sub = c.Subtraction(a, b);
             Assert.AreEqual(a - b, sub);
         }
         [TestMethod]
         public void MultTest()
         {
             Calc c = new Calc();
-            int a = 10;
-            int b = 45;
+            double a = 10;
+            double b = 45;
             double mult = c.Multiply(a, b);
-            Assert.AreEqual((double)a * (double)b, mult);
+            Assert.AreEqual(a * b, mult);
         }
     }
 }

@@ -7,6 +7,7 @@ namespace HW_5
     {
         static void Main(string[] args)
         {
+            int n = 3;
             string tempPath = $"{Data.path}_{DateTime.Now.ToString("dd-MM-yy_HH-mm-ss")}.txt";
             if (!File.Exists(tempPath))
             {
@@ -15,19 +16,19 @@ namespace HW_5
             }
             Checker checker = new Checker(tempPath);
             Console.WriteLine("Checking Dictionary");
-            checker.CheckDictionary();
+            checker.CheckDictionary(n);
             Console.WriteLine("Checking Sorted Dictionary");
-            checker.CheckSortedDictionary();
+            checker.CheckSortedDictionary(n);
             Console.WriteLine("Checking Sorted Set");
-            checker.CheckSortedSet();
+            checker.CheckSortedSet(n);
             Console.WriteLine("Checking Queue");
-            checker.CheckQueue();
+            checker.CheckQueue(n);
             Console.WriteLine("Checking Stack");
-            checker.CheckStack();
+            checker.CheckStack(n);
             Console.WriteLine("Checking Sorted Set");
-            checker.CheckList();
+            checker.CheckList(n);
             Console.WriteLine("Checking Linked List");
-            checker.CheckLinkedList();
+            checker.CheckLinkedList(n);
             Console.WriteLine("Checking complete. Press any key to exit.");
             Console.ReadLine();
         }
