@@ -21,7 +21,7 @@ namespace HW_5
                 wwl.ReadList();
                 wwl.FindInList();
                 wwl.RemoveFromList();
-                List<List<Timer>> llt = new List<List<Timer>>();
+                List<Timer> llt = new List<Timer>();
                 llt.Add(wwl.MyTimerAdd);
                 llt.Add(wwl.MyTimerRead);
                 llt.Add(wwl.MyTimerSearch);
@@ -40,7 +40,7 @@ namespace HW_5
                 wwll.ReadList();
                 wwll.FindInList();
                 wwll.RemoveFromList();
-                List<List<Timer>> llt = new List<List<Timer>>();
+                List<Timer> llt = new List<Timer>();
                 llt.Add(wwll.MyTimerAdd);
                 llt.Add(wwll.MyTimerRead);
                 llt.Add(wwll.MyTimerSearch);
@@ -54,7 +54,7 @@ namespace HW_5
             
             for (int i = 0; i < n; i++)
             {
-                List<List<Timer>> llt = new List<List<Timer>>();
+                List<Timer> llt = new List<Timer>();
                 Logger log = new Logger();
                 WorkWithDictionary wwd = new WorkWithDictionary();
                 int amount = (int)Math.Pow(10, i + 3);
@@ -80,7 +80,7 @@ namespace HW_5
                 wwsd.ReadList();
                 wwsd.FindInList();
                 wwsd.RemoveFromList();
-                List<List<Timer>> llt = new List<List<Timer>>();
+                List<Timer> llt = new List<Timer>();
                 llt.Add(wwsd.MyTimerAdd);
                 llt.Add(wwsd.MyTimerRead);
                 llt.Add(wwsd.MyTimerSearch);
@@ -99,7 +99,7 @@ namespace HW_5
                 wwq.ReadList();
                 wwq.FindInList();
                 wwq.RemoveFromList();
-                List<List<Timer>> llt = new List<List<Timer>>();
+                List<Timer> llt = new List<Timer>();
                 llt.Add(wwq.MyTimerAdd);
                 llt.Add(wwq.MyTimerRead);
                 llt.Add(wwq.MyTimerSearch);
@@ -118,7 +118,7 @@ namespace HW_5
                 wws.ReadList();
                 wws.FindInList();
                 wws.RemoveFromList();
-                List<List<Timer>> llt = new List<List<Timer>>();
+                List<Timer> llt = new List<Timer>();
                 llt.Add(wws.MyTimerAdd);
                 llt.Add(wws.MyTimerRead);
                 llt.Add(wws.MyTimerSearch);
@@ -137,7 +137,7 @@ namespace HW_5
                 wwss.ReadList();
                 wwss.FindInList();
                 wwss.RemoveFromList();
-                List<List<Timer>> llt = new List<List<Timer>>();
+                List<Timer> llt = new List<Timer>();
                 llt.Add(wwss.MyTimerAdd);
                 llt.Add(wwss.MyTimerRead);
                 llt.Add(wwss.MyTimerSearch);

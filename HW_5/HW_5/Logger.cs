@@ -15,16 +15,13 @@ namespace HW_5
             NameOfLists.Add("Search Element\r\n");
             NameOfLists.Add("Remove Element\r\n");
         }
-        public void Log(string collection, List<List<Timer>> listOfTimers, string path)
+        public void Log(string collection, List<Timer> listOfTimers, string path)
         {
             File.AppendAllText(path, $"\r\n\r\nCollection {collection}: \r\n\r\n");
             for (int i = 0; i < 4; i++)
             {
                 File.AppendAllText(path, NameOfLists[i]);
-                foreach (Timer t in listOfTimers[i])
-                {
-                    File.AppendAllText(path, t.ToString());
-                }
+                File.AppendAllText(path, listOfTimers[i].ToString());
             }
         }
     }
