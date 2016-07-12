@@ -83,9 +83,9 @@ namespace CalcTest_xUint
             Assert.True((a / b) == c.Divide(a, b));
         }
 
-        [Fact]
-        /*[Timeout(1000)]
-        [Description("Timeout")]*/
+/*        [Fact]
+        [Timeout(1000)]
+        [Description("Timeout")]
         public void TimeoutFact()
         {
             int i = 0;
@@ -97,7 +97,7 @@ namespace CalcTest_xUint
                     i--;
             }
         }
-
+*/
         [Fact]
         /*[Timeout(1000)]
         [Description("Exception")]*/

@@ -6,7 +6,7 @@
     public class BaseClass
     {
         [TestFixtureSetUp]
-        static public void ClassInit(TestContext context)
+        static public void ClassInit()
         {
             Console.WriteLine($"ClassInit");
         }

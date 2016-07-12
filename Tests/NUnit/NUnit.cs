@@ -6,29 +6,9 @@
     using System;
 
     [TestFixture]
-    public class NUnitTests //: BaseClass
+    public class NUnitTests : BaseClass
     {
-        /*        [TestFixtureSetUp]
-                static public void TextFixtureInit(TestContext context)
-                {
-                    Console.WriteLine($"TextFixtureInit");
-                }
-                [TestFixtureTearDown]
-                static public void TextFixtureCleanup()
-                {
-                    Console.WriteLine($"TextFixtureCleanup");
-                }
-                [SetUp]
-                public void Init()
-                {
-                    Console.WriteLine($"TestInit");
-                }
-                [TearDown]
-                public void Cleanup()
-                {
-                    Console.WriteLine($"Testleanup");
-                }
-        */
+
 /*        [TestFixtureSetUp]
         static public void ClassInit(TestContext context)
         {
