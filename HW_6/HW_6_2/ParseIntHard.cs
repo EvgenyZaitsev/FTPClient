@@ -19,38 +19,57 @@ namespace HW_6_2
             if (this.StringNumber[0] == '-')
             {
                 this.StringNumber = this.StringNumber.Substring(1);
-                IsNegative = true;
+                this.IsNegative = true;
             }
-            if (this.StringNumber[0] == '+')
+            else if (this.StringNumber[0] == '+')
             {
                 this.StringNumber = this.StringNumber.Substring(1);
-                IsNegative = false;
+                this.IsNegative = false;
             }
-            IsNegative = false;
+            else
+                this.IsNegative = false;
         }
         public int TryParse(out int number)
         {
+
             number = default(int);
-            CheckNegative();
+            if (this.StringNumber == null)
+                return 0;
             if (this.StringNumber.Length == 0)
                 return 0;
+            CheckNegative();
             foreach (char c in this.StringNumber)
             {
-                if (c > '9' || c < '0')
+                if ((c > '9' || c < '0') && (c !='.' || c!= ','))
                     return 0;
             }
-            if (this.StringNumber.Length >= 9 && 
-                (this.StringNumber.CompareTo(Int32.MaxValue.ToString()) == 1 ||
-                this.StringNumber.CompareTo(Int32.MinValue.ToString()) == -1))
-                return -1;
-            while (this.StringNumber.Length > 0)
-            {
-                number += (this.StringNumber[0] - '0') * (int)Math.Pow(10, this.StringNumber.Length - 1);
-                this.StringNumber = this.StringNumber.Substring(1);
-            }
             if (IsNegative)
-                return -number;
-            return number;
+            {
+                if (this.StringNumber.Length >= 10 &&
+                    ("-" + this.StringNumber).CompareTo(Int32.MinValue.ToString()) == 1)
+                    return -1;
+            }
+            else
+            {
+                if (this.StringNumber.Length >= 10 &&
+                    this.StringNumber.CompareTo(Int32.MaxValue.ToString()) == 1)
+                    return -1;
+            }
+            if (this.StringNumber.Replace(',', '.').Contains("."))
+                return -1;
+            if (IsNegative)
+                while (this.StringNumber.Length > 0)
+                {
+                    number -= (this.StringNumber[0] - '0') * (int)Math.Pow(10, this.StringNumber.Length - 1);
+                    this.StringNumber = this.StringNumber.Substring(1);
+                }
+            else
+                while (this.StringNumber.Length > 0)
+                {
+                    number += (this.StringNumber[0] - '0') * (int)Math.Pow(10, this.StringNumber.Length - 1);
+                    this.StringNumber = this.StringNumber.Substring(1);
+                }
+            return 1;
         }
     }
 }

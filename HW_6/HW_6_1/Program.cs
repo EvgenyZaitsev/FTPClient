@@ -32,7 +32,7 @@ namespace HW_6_1
                 catch (Exception e)
                 {
                     Logger log = new Logger(Data.LogPath);
-                    log.Log(e.StackTrace);
+                    log.Log(e.GetType() + " " + e.StackTrace);
                     Console.WriteLine(e.Message);
                 }
                 try
@@ -42,14 +42,14 @@ namespace HW_6_1
                 catch (IOException e)
                 {
                     Logger log = new Logger(Data.LogPath);
-                    log.Log(e.StackTrace);
+                    log.Log(e.GetType() + " " + e.StackTrace);
                     Console.WriteLine(e.Message);
                 }
             }
             catch (Exception e)
             {
                 Logger log = new Logger(Data.LogPath);
-                log.Log(e.StackTrace);
+                log.Log(e.GetType() + " " + e.StackTrace);
                 Console.WriteLine(e.Message);
             }
             

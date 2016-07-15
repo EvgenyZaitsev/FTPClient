@@ -17,11 +17,14 @@ namespace HW_6_2
         }
         public int TryParse(out int number)
         {
+            
             number = default(int);
             double d;
-            if (!double.TryParse(this.StringNumber, out d))
+            if (this.StringNumber == null)
                 return 0;
-            if (d > intMaxValue - 1 || d < intMinValue + 1)
+            if (!double.TryParse(this.StringNumber.Replace(',','.'), out d))
+                return 0;
+            if (d > intMaxValue || d < intMinValue)
                 return -1;
             number = (int)d;
             if ((double)number - d != 0)

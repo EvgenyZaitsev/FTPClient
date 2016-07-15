@@ -23,7 +23,7 @@ namespace HW_6_1
                 throw new FileNotFoundException("Wrong path to File! Enter correct path, please.");
             if ((ListOfLines = System.IO.File.ReadAllLines(this.FilePath).ToList()) == null)
                 throw new FileLoadException("Can't read data from file. Plase, check it for correction.");
-            if (ListOfLines.Count == 0)
+            if (!ListOfLines.Any())
                 throw new IOException("No data in file. Please, fill it before.");
         }
         public void GetFileInfo()
