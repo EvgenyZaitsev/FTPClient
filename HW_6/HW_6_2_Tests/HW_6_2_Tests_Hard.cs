@@ -17,7 +17,25 @@ namespace HW_6_2_Tests
             pih.TryParse(out number);
             Assert.AreEqual(12345, number);
         }
-        
+
+        [TestMethod]
+        public void CheckZeroIntegerNumberHard()
+        {
+            ParseIntHard pih = new ParseIntHard("0");
+            int number;
+            pih.TryParse(out number);
+            Assert.AreEqual(0, number);
+        }
+
+        [TestMethod]
+        public void CheckNegativeZeroIntegerNumberHard()
+        {
+            ParseIntHard pih = new ParseIntHard("-0");
+            int number;
+            pih.TryParse(out number);
+            Assert.AreEqual(-0, number);
+        }
+
         [TestMethod]
         public void CheckNegativeIntegerNumberHard()
         {

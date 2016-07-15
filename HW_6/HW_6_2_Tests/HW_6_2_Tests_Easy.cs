@@ -16,6 +16,24 @@ namespace HW_6_2_Tests
         }
 
         [TestMethod]
+        public void CheckZeroIntegerNumberEasy()
+        {
+            ParseIntEasy pie = new ParseIntEasy("0");
+            int number;
+            pie.TryParse(out number);
+            Assert.AreEqual(0, number);
+        }
+
+        [TestMethod]
+        public void CheckNegativeZeroIntegerNumberEasy()
+        {
+            ParseIntEasy pie = new ParseIntEasy("-0");
+            int number;
+            pie.TryParse(out number);
+            Assert.AreEqual(-0, number);
+        }
+
+        [TestMethod]
         public void CheckNegativeIntegerNumberEasy()
         {
             ParseIntEasy pie = new ParseIntEasy("-12345");
