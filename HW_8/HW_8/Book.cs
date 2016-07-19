@@ -4,34 +4,37 @@ namespace HW_8
 {
     public class Book
     {
-        private string id;
-        private string isbn;
-        private string author;
-        private string title;
-        private string genre;
-        private string publisher;
-        private DateTime publish_date;
-        private string description;
-        private DateTime registration_date;
 
         [XmlAttribute("id")]
-        public string ID { get { return id; } set { id = value; } }
+        public string ID { get; set; }
         [XmlElement("isbn")]
-        public string ISBN { get { return isbn; } set { isbn = value; } }
+        public string ISBN { get; set; }
         [XmlElement("author")]
-        public string Author { get { return author; } set { author = value; } }
+        public string Author { get; set; }
         [XmlElement("title")]
-        public string Title { get { return title; } set { title = value; } }
+        public string Title { get; set; }
         [XmlElement("genre")]
-        public string Genre { get { return genre; } set { genre = value; } }
+        public string Genre { get; set; }
         [XmlElement("publisher")]
-        public string Publisher { get { return publisher; } set { publisher = value; } }
+        public string Publisher { get; set ; }
+        [XmlIgnore]
+        public DateTime PublishDate { get; set; }
         [XmlElement("publish_date")]
-        public DateTime PublishDate { get { return publish_date; } set { publish_date = value; } }
+        public string PublishDateString
+        {
+            get { return this.PublishDate.ToString("yyyy-MM-dd"); }
+            set { this.PublishDate = DateTime.Parse(value); }
+        }
         [XmlElement("description")]
-        public string Desccription { get { return description; } set { description = value; } }
+        public string Desccription { get; set; }
+        [XmlIgnore]
+        public DateTime RegistrationDate { get; set; }
         [XmlElement("registration_date")]
-        public DateTime RegistrationDate { get { return registration_date; } set { registration_date = value; } }
+        public string RegistrationDateString
+        {
+            get { return this.RegistrationDate.ToString("yyyy-MM-dd"); }
+            set { this.RegistrationDate = DateTime.Parse(value); }
+        }
 
         public Book()
         {

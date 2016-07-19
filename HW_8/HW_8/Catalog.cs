@@ -7,12 +7,16 @@ namespace HW_8
     [XmlRootAttribute("catalog", Namespace = "http://library.by/catalog", IsNullable = false)]
     public class Catalog
     {
-        private List<Book> books;
-        private DateTime date;
+        [XmlIgnore]
+        public DateTime Date { get; set; }
         [XmlAttribute("date")]
-        public DateTime Date { get { return date; } set { date = value; } }
+        public string DateString
+        {
+            get { return this.Date.ToString("yyyy-MM-dd"); }
+            set { this.Date = DateTime.Parse(value); }
+        }
         [XmlElement("book")]
-        public List<Book> Books { get { return books; } set { books = value; } }
+        public List<Book> Books { get; set; }
         public Catalog()
         {
             this.Books = new List<Book>();
