@@ -4,11 +4,11 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{EE846CF9-7940-4AF6-BA1B-10945037BDA2}</ProjectGuid>
+    <ProjectGuid>{B7409B4D-A183-488C-B7E1-355F9A6BC534}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Framework</RootNamespace>
-    <AssemblyName>Framework</AssemblyName>
+    <RootNamespace>FrameworkCore</RootNamespace>
+    <AssemblyName>FrameworkCore</AssemblyName>
     <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
@@ -30,8 +30,8 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Microsoft.VisualStudio.QualityTools.UnitTestFramework, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL" />
     <Reference Include="System" />
+    <Reference Include="System.configuration" />
     <Reference Include="System.Core" />
     <Reference Include="System.Drawing" />
     <Reference Include="System.Xml.Linq" />
@@ -50,23 +50,24 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Logic\Pages\LoginPage.cs" />
-    <Compile Include="Logic\Pages\HomePage.cs" />
-    <Compile Include="Logic\Steps\Autorization.cs" />
-    <Compile Include="Logic\Tests\Tests.cs" />
+    <Compile Include="Core\Logic\Elements\Button.cs" />
+    <Compile Include="Core\Logic\Elements\Checkbox.cs" />
+    <Compile Include="Core\Logic\Elements\Element.cs" />
+    <Compile Include="Core\Logic\Elements\Input.cs" />
+    <Compile Include="Core\Logic\Elements\Link.cs" />
+    <Compile Include="Core\Logic\Elements\RadioButton.cs" />
+    <Compile Include="Core\Logic\Elements\TextArea.cs" />
+    <Compile Include="Core\Logic\Pages\Page.cs" />
+    <Compile Include="Core\Utility\Exceptions\InvalidBrowserException.cs" />
+    <Compile Include="Core\Utility\Exceptions\InvalidDataException.cs" />
+    <Compile Include="Core\Utility\Logger\Logger.cs" />
+    <Compile Include="Core\Utility\Waiter\Waiter.cs" />
+    <Compile Include="Core\Utility\WebDriver\WebDriver.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="App.config" />
     <None Include="packages.config" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\FrameworkCore\FrameworkCore.csproj">
-      <Project>{b7409b4d-a183-488c-b7e1-355f9a6bc534}</Project>
-      <Name>FrameworkCore</Name>
-    </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
-    <Service Include="{82A7F48D-3B50-4B1E-B82E-3ADA8210C358}" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
