@@ -1,4 +1,5 @@
 ﻿using OpenQA.Selenium;
+using System;
 
 namespace FrameworkCore.Core.Logic.Elements
 {
@@ -8,6 +9,7 @@ namespace FrameworkCore.Core.Logic.Elements
         public IWebDriver driver;
         public Element(By by)
         {
+//            driver.Manage().Timeouts().ImplicitlyWait(TimeSpan.FromSeconds(10));
             By = by;
         }
     }

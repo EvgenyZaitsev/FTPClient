@@ -1,5 +1,6 @@
 ﻿using OpenQA.Selenium;
 using FrameworkCore.Core.Utility.WebDriver;
+using System;
 
 namespace FrameworkCore.Core.Logic.Pages
 {
@@ -9,6 +10,7 @@ namespace FrameworkCore.Core.Logic.Pages
         public IWebDriver Driver;
         public Page()
         {
+//            Driver.Manage().Timeouts().ImplicitlyWait(TimeSpan.FromSeconds(10));
             this.Driver = WebDriver.CreateDriver();
         }
         public void OpenPage()

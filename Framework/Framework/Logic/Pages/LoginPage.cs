@@ -30,14 +30,12 @@ namespace Framework.Logic.Pages
     }
         public void SwitchUser()
         {
-            Waiter.ImplicitWait(1000);
-            Driver.FindElement(linkChangeUser.By).Click();
-            Waiter.ExplicitWaitBy(1000, linkAddAccount.By).Click();
-        }
-        public void SwapUser()
-        {
-            Waiter.ImplicitWait(1000);
-            Driver.FindElement(linkChangeUser.By).Click();
+            try
+            {
+                Driver.FindElement(linkChangeUser.By).Click();
+            }
+            catch(NoSuchElementException) { }
+            catch (UnhandledAlertException) { }
             Waiter.ExplicitWaitBy(1000, linkAddAccount.By).Click();
         }
     }
