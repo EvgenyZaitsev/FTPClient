@@ -5,6 +5,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Configuration;
+using System.Threading;
+
 namespace Framework.Logic.Steps
 {
     class Forward
@@ -18,7 +20,8 @@ namespace Framework.Logic.Steps
             string pass2 = ConfigurationManager.AppSettings["password2"];
             string login3 = ConfigurationManager.AppSettings["login3"];
             string pass3 = ConfigurationManager.AppSettings["password3"];
-            string textToSend = "Check Forward.";
+            string textToSend = "Check Forward with attach";
+            string textToSend2 = "Check Forward without attach";
             LoginPage loginPage = new LoginPage();
             loginPage.OpenPage();
             loginPage.SetLoginAndPassword(login2, pass2);
@@ -33,21 +36,24 @@ namespace Framework.Logic.Steps
             loginPage.SwitchUser();
             loginPage.SetLoginAndPassword(login2, pass2);
             emailPage.GoToForwarding();
-
-
-
-
-            //emailPage.AddToSpam();
-            //emailPage.Logout();
-            //loginPage.SwitchUser();
-            //loginPage.SetLoginAndPassword(login1, pass1);
-            //emailPage.SendEmail(login2, $"new {textToSend}");
-            //emailPage.Logout();
-            //loginPage.SwitchUser();
-            //loginPage.SetLoginAndPassword(login2, pass2);
-            //emailPage.GoToSpam();
-            //return emailPage.CheckSpam($"new {textToSend}");
-            return false;
+            emailPage.SelectForwardToAndAddFilters(login1);
+            emailPage.Logout();
+            loginPage.SwitchUser();
+            loginPage.SetLoginAndPassword(login1, pass1);
+            Thread.Sleep(1000);
+            emailPage.SendEmailWithAttach(login2, textToSend);
+            emailPage.SendEmail(login2, textToSend2);
+            emailPage.Logout();
+            loginPage.SwitchUser();
+            loginPage.SetLoginAndPassword(login2, pass2);
+            bool check1 = emailPage.CheckInbox(textToSend2);
+            emailPage.GoToBin();
+            bool check2 = emailPage.CheckBin(textToSend);
+            emailPage.Logout();
+            loginPage.SwitchUser();
+            loginPage.SetLoginAndPassword(login3, pass3);
+            bool check3 = emailPage.CheckInbox(textToSend2);
+            return check1 && check2 && check3;
         }
     }
 }
