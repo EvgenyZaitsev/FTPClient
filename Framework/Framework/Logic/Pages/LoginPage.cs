@@ -4,6 +4,8 @@ using FrameworkCore.Core.Utility.Exceptions;
 using FrameworkCore.Core.Utility.Waiter;
 using FrameworkCore.Core.Utility.WebDriver;
 using OpenQA.Selenium;
+using OpenQA.Selenium.Support.UI;
+using System.Threading;
 
 namespace Framework.Logic.Pages
 {
@@ -23,20 +25,29 @@ namespace Framework.Logic.Pages
         }
         public void SetLoginAndPassword(string login, string password)  
         {
-            Waiter.ExplicitWaitBy(1000, inputEmail.By).SendKeys(login);
+            Thread.Sleep(1000);
+            Waiter.ExplicitWaitWithCondition(1000,ExpectedConditions.ElementIsVisible(inputEmail.By)).SendKeys(login);
             Waiter.ExplicitWaitBy(1000, buttonNext.By).Click();
-            Waiter.ExplicitWaitBy(1000, inputPassword.By).SendKeys(password);
+            Thread.Sleep(1000);
+            Waiter.ExplicitWaitWithCondition(1000, ExpectedConditions.ElementIsVisible(inputPassword.By)).SendKeys(password);
             Waiter.ExplicitWaitBy(1000, buttonEnter.By).Click();
     }
         public void SwitchUser()
         {
+            Thread.Sleep(2000);
             try
             {
                 Driver.FindElement(linkChangeUser.By).Click();
             }
             catch(NoSuchElementException) { }
             catch (UnhandledAlertException) { }
-            Waiter.ExplicitWaitBy(1000, linkAddAccount.By).Click();
+            try
+            {
+                Driver.FindElement(linkAddAccount.By).Click();
+            }
+            catch (NoSuchElementException) { }
+            catch (UnhandledAlertException) { }
+            
         }
     }
 }

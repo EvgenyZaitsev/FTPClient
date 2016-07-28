@@ -24,6 +24,15 @@ namespace Framework.Logic.Steps
             string textToSend2 = "Check Forward without attach";
             LoginPage loginPage = new LoginPage();
             loginPage.OpenPage();
+            Thread.Sleep(4000);
+            EmailPage ep = new EmailPage();
+            LoginPage lp = new LoginPage();
+            try
+            {
+//                ep.Logout();
+                lp.SwitchUser();
+            }
+            catch (Exception) { }
             loginPage.SetLoginAndPassword(login2, pass2);
             EmailPage emailPage = new EmailPage();
             emailPage.GoToForwarding();
@@ -40,8 +49,8 @@ namespace Framework.Logic.Steps
             emailPage.Logout();
             loginPage.SwitchUser();
             loginPage.SetLoginAndPassword(login1, pass1);
-            Thread.Sleep(1000);
-            emailPage.SendEmailWithAttach(login2, textToSend);
+            Thread.Sleep(4000);
+            emailPage.SendEmailWithAttach(ConfigurationManager.AppSettings["attachPath"], login2, textToSend);
             emailPage.SendEmail(login2, textToSend2);
             emailPage.Logout();
             loginPage.SwitchUser();

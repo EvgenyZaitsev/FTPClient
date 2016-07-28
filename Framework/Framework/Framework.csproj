@@ -54,6 +54,7 @@
   <ItemGroup>
     <Compile Include="Logic\Pages\LoginPage.cs" />
     <Compile Include="Logic\Pages\EmailPage.cs" />
+    <Compile Include="Logic\Steps\Attachment.cs" />
     <Compile Include="Logic\Steps\Spam.cs" />
     <Compile Include="Logic\Steps\Forward.cs" />
     <Compile Include="Logic\Tests\GMailTests.cs" />

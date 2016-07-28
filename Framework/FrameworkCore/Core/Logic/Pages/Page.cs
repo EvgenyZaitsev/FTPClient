@@ -11,7 +11,7 @@ namespace FrameworkCore.Core.Logic.Pages
         public Page()
         {
 //            Driver.Manage().Timeouts().ImplicitlyWait(TimeSpan.FromSeconds(10));
-            this.Driver = WebDriver.CreateDriver();
+            this.Driver = WebDriver.GetDriver();
         }
         public void OpenPage()
         {
