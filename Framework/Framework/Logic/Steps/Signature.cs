@@ -8,7 +8,7 @@ using Framework.Logic.Pages;
 using System.Threading;
 namespace Framework.Logic.Steps
 {
-    class Signature
+    public class Signature
     {
         public bool SetSignature()
         {

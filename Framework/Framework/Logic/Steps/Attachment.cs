@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace Framework.Logic.Steps
 {
-    class Attachment
+    public class Attachment
     {
         public bool BigAttachment()
         {

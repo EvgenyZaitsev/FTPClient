@@ -10,7 +10,7 @@ using System.Configuration;
 using Framework.Utility.IPLocator;
 namespace Framework.Logic.Steps
 {
-    class Spam
+    public class Spam
     {
         public const string URL = @"https://www.gmail.com";
         public bool AutorizeAndCheckSpam()

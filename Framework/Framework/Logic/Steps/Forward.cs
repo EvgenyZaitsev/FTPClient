@@ -9,7 +9,7 @@ using System.Threading;
 
 namespace Framework.Logic.Steps
 {
-    class Forward
+    public class Forward
     {
         public const string URL = @"https://www.gmail.com";
         public bool ForwardMailToAnotherUser()

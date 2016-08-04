@@ -9,7 +9,7 @@ using System.Threading;
 
 namespace Framework.Logic.Pages
 {
-    class LoginPage : Page
+    public class LoginPage : Page
     {
         private Input inputEmail = new Input(By.Id("Email"));
         private Button buttonNext = new Button(By.Name("signIn"));

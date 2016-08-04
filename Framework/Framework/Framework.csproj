@@ -60,13 +60,14 @@
     <Compile Include="Logic\Pages\EmailPage.cs" />
     <Compile Include="Logic\Steps\Attachment.cs" />
     <Compile Include="Logic\Steps\BadTheme.cs" />
+    <Compile Include="Logic\Steps\Emoticons.cs" />
     <Compile Include="Logic\Steps\MarkAndUnMarkSpam.cs" />
     <Compile Include="Logic\Steps\Signature.cs" />
     <Compile Include="Logic\Steps\Spam.cs" />
     <Compile Include="Logic\Steps\Forward.cs" />
     <Compile Include="Logic\Steps\Starred.cs" />
     <Compile Include="Logic\Steps\Vacation.cs" />
-    <Compile Include="Utility\GMailTests.cs" />
+    <Compile Include="Logic\Tests\GMailTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Utility\IPLocator\IPLocator.cs" />
   </ItemGroup>
@@ -85,9 +86,7 @@
   <ItemGroup>
     <Service Include="{82A7F48D-3B50-4B1E-B82E-3ADA8210C358}" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Logic\Tests\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

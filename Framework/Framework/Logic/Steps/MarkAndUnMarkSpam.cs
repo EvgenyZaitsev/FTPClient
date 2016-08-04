@@ -8,7 +8,7 @@ using System.Configuration;
 using System.Threading;
 namespace Framework.Logic.Steps
 {
-    class MarkAndUnmarkSpam
+    public class MarkAndUnmarkSpam
     {
         public bool SetAndUnSetSpam()
         {

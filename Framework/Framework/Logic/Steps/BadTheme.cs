@@ -9,7 +9,7 @@ using Framework.Logic.Pages;
 
 namespace Framework.Logic.Steps
 {
-    class BadTheme
+    public class BadTheme
     {
         public bool SetBadTheme()
         {

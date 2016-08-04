@@ -9,16 +9,16 @@ using Framework.Logic.Pages;
 
 namespace Framework.Logic.Steps
 {
-    public class Vacation
+    public class Emoticons
     {
-        public bool SetVacation()
+        public bool SendEmoticons()
         {
             string login1 = ConfigurationManager.AppSettings["login1"];
             string pass1 = ConfigurationManager.AppSettings["password1"];
             string login3 = ConfigurationManager.AppSettings["login3"];
             string pass3 = ConfigurationManager.AppSettings["password3"];
-            string subject = ConfigurationManager.AppSettings["subject"];
             string message = ConfigurationManager.AppSettings["message"];
+            string subject = "Emoticons";
             LoginPage loginPage = new LoginPage();
             loginPage.OpenPage();
             Thread.Sleep(4000);
@@ -30,15 +30,13 @@ namespace Framework.Logic.Steps
             }
             catch (Exception) { }
             loginPage.SetLoginAndPassword(login3, pass3);
-            EmailPage ep = new EmailPage();
-            ep.SetVacationResponder(subject, message);
-            ep.Logout();
+            EmailPage emailPage = new EmailPage();
+            emailPage.SendEmailWithEmoticons(login1, subject);
+            emailPage.Logout();
             loginPage.SwitchUser();
             loginPage.SetLoginAndPassword(login1, pass1);
-            ep.SendEmail(login3, "testing");
-            Thread.Sleep(10000);
-            ep.Driver.Navigate().Refresh();
-            return ep.CheckFirstMessage(subject);
+            Thread.Sleep(2000);
+            return emailPage.CheckFirstMessage(subject);
         }
-    }
+    }   
 }

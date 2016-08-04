@@ -10,7 +10,7 @@ using System.Configuration;
 
 namespace Framework.Logic.Pages
 {
-    class EmailPage : Page
+    public class EmailPage : Page
     {
         private Button buttonCompose = new Button(By.XPath("//div[text()='COMPOSE']"));
         private Input inputTo = new Input(By.Name("to"));
@@ -49,14 +49,18 @@ namespace Framework.Logic.Pages
         private Input inputVacationSubject = new Input(By.XPath("//tr[4]/td[3]/input"));
         private Input inputVacationMessage = new Input(By.XPath("//td[3]/div/table/tbody/tr/td[2]/div/div/textarea"));
         private Link linkPlainText = new Link(By.XPath("//span[4]"));
-
-
+        private Button buttonSelectEmoticon = new Button(By.XPath("//td[4]/div/div[5]"));
+        private Button buttonEmoticon1 = new Button(By.XPath("//div[2]/div/div/div/div/button"));
+        private Button buttonEmoticon2 = new Button(By.XPath("//div[2]/div/div/div/div/button[2]"));
+        private Input inputSubject = new Input(By.Name("subjectbox"));
 
         public void SendEmail(string receiverEmail, string text)
         {
             Waiter.ExplicitWaitWithCondition(20, ExpectedConditions.ElementIsVisible(buttonCompose.By)).Click();
             Waiter.ExplicitWaitWithCondition(20, ExpectedConditions.ElementIsVisible(inputTo.By)).SendKeys(receiverEmail);
-            Waiter.ExplicitWaitBy(20, inputEmailContent.By).SendKeys(text);
+            var textarea = Waiter.ExplicitWaitBy(20, inputEmailContent.By);
+            textarea.Clear();
+            textarea.SendKeys(text);
             Waiter.ExplicitWaitBy(20, buttonSend.By).Click();
         }
         public void Logout()
@@ -69,12 +73,16 @@ namespace Framework.Logic.Pages
         {
             try
             {
+                Thread.Sleep(2000);
                 if (Driver.FindElement(By.XPath("/html/body/div[7]/div[3]/div/div[2]/div[1]/div[2]/div/div/div/div[2]/div[1]/div[1]/div/div[1]/div[7]/div/div[1]/div[2]/div/table/tbody/tr[1]/td[5]/div[2]/span"))?.Text == "Test 1")
                 {
+                    Thread.Sleep(1000);
                     Waiter.ExplicitWaitBy(20, checkboxForFirstMessage.By).Click();
                     Waiter.ExplicitWaitBy(20, buttonSpam.By).Click();
-                    Waiter.ExplicitWaitBy(20, inputSearch.By).SendKeys("in:spam");
-                    Waiter.ExplicitWaitBy(20, buttonSearch.By).Click();
+                    Thread.Sleep(1000);
+                    GoToSpam();
+                    //Waiter.ExplicitWaitBy(20, inputSearch.By).SendKeys("in:spam");
+                    //Waiter.ExplicitWaitBy(20, buttonSearch.By).Click();
                 }
             }
             catch (NoSuchElementException) { }
@@ -165,23 +173,41 @@ namespace Framework.Logic.Pages
         }
         public bool SendEmailWithAttach(string path, string receiverEmail, string text)
         {
-            Waiter.ExplicitWaitBy(20, buttonCompose.By).Click();
+            Waiter.ExplicitWaitWithCondition(20,ExpectedConditions.ElementToBeClickable(buttonCompose.By)).Click();
             Waiter.ExplicitWaitBy(20, inputTo.By).SendKeys(receiverEmail);
-            Waiter.ExplicitWaitBy(20, inputEmailContent.By).SendKeys(text);
-            System.Windows.Forms.Clipboard.SetText(path);
+            var textarea = Waiter.ExplicitWaitBy(20, inputEmailContent.By);
+            textarea.Clear();
+            textarea.SendKeys(text);
+            Thread thread = new Thread(
+               () =>
+               {
+                   System.Windows.Forms.Clipboard.SetText(path);
+               });
+            thread.SetApartmentState(ApartmentState.STA);
+            thread.Start();
+//            System.Windows.Forms.Clipboard.SetText(path);
             Waiter.ExplicitWaitBy(20, buttonAttachFiles.By).Click();
             Thread.Sleep(4000);
             System.Windows.Forms.SendKeys.SendWait("^(v)");
             Thread.Sleep(1000);
             System.Windows.Forms.SendKeys.SendWait("{ENTER}");
-            Thread.Sleep(10000);
+            Thread.Sleep(500);
             try
             {
-                var element = Driver.FindElement(By.Name("ok"));
-                element.Click();
-                return true;
+                //        var element = Driver.FindElement(By.Name("ok"));
+                //        element.Click();
+                var elements = Driver.FindElements(By.XPath("//button"));
+                foreach (var element in elements)
+                    if (element.Text == "Cancel")
+                        element.Click();
+             
             }
-            catch (Exception) { return false; }
+            catch (Exception)
+            {
+                Waiter.ExplicitWaitBy(20, buttonSend.By).Click();
+                return false; }
+            Waiter.ExplicitWaitBy(20, buttonSend.By).Click();
+            return true;
         }
         public void GoToBin()
         {
@@ -229,6 +255,7 @@ namespace Framework.Logic.Pages
         }
         public string SetStarred()
         {
+            Thread.Sleep(1000);
             if (Driver.FindElement(checkboxIsStarred.By).GetAttribute("title") != "Starred")
                 Waiter.ExplicitWaitBy(20, checkboxIsStarred.By).Click();
             return Driver.FindElement(By.XPath("//div/div/span/b")).Text;
@@ -257,7 +284,7 @@ namespace Framework.Logic.Pages
         {
             GoToSpam();
             Waiter.ExplicitWaitWithCondition(20, ExpectedConditions.ElementToBeClickable(By.XPath("//div[4]/div/div/table/tbody/tr/td[2]/div/div"))).Click();
-            var subjectSpam = Driver.FindElement(By.XPath("//div/div/span/b")).Text;
+            var subjectSpam = Driver.FindElement(By.XPath("//div[4]/div/div/table/tbody/tr/td[6]/div/div/div/span/b")).Text;
             Waiter.ExplicitWaitWithCondition(20, ExpectedConditions.ElementToBeClickable(buttonRemoveFromSpam.By)).Click();
             return subjectSpam.Equals(text);
         }
@@ -270,7 +297,13 @@ namespace Framework.Logic.Pages
             Thread.Sleep(2000);
             Driver.SwitchTo().Frame(Driver.FindElement(By.XPath("//iframe[@class='KA-JQ']")));
             Waiter.ExplicitWaitWithCondition(20, ExpectedConditions.ElementToBeClickable(tabUploadPhoto.By)).Click();
-            System.Windows.Forms.Clipboard.SetText(path);
+            Thread thread = new Thread(
+                           () =>
+                           {
+                               System.Windows.Forms.Clipboard.SetText(path);
+                           });
+            thread.SetApartmentState(ApartmentState.STA);
+            thread.Start();
             Waiter.ExplicitWaitWithCondition(20, ExpectedConditions.ElementToBeClickable(buttonSelectPhoto.By)).Click();
             Thread.Sleep(4000);
             System.Windows.Forms.SendKeys.SendWait("^(v)");
@@ -310,7 +343,7 @@ namespace Framework.Logic.Pages
             message.SendKeys(vacationMessage);
             Waiter.ExplicitWaitWithCondition(20, ExpectedConditions.ElementIsVisible(buttonSaveChanges.By)).Click();
         }
-        public bool CheckVacationMessage(string subject)
+        public bool CheckFirstMessage(string subject)
         {
             try
             {
@@ -320,6 +353,19 @@ namespace Framework.Logic.Pages
             {
                 return false;
             }
+        }
+        public void SendEmailWithEmoticons(string email, string subject)
+        {
+            Waiter.ExplicitWaitWithCondition(20, ExpectedConditions.ElementIsVisible(buttonCompose.By)).Click();
+            Waiter.ExplicitWaitWithCondition(20, ExpectedConditions.ElementIsVisible(inputTo.By)).SendKeys(email);
+            Waiter.ExplicitWaitWithCondition(20, ExpectedConditions.ElementIsVisible(inputSubject.By)).SendKeys(subject);
+            Waiter.ExplicitWaitWithCondition(20, ExpectedConditions.ElementToBeClickable(buttonSelectEmoticon.By)).Click();
+            Waiter.ExplicitWaitWithCondition(20, ExpectedConditions.ElementIsVisible(By.XPath("//button[2]"))).Click();
+            Waiter.ExplicitWaitBy(20, inputEmailContent.By).SendKeys("");
+            Waiter.ExplicitWaitWithCondition(20, ExpectedConditions.ElementIsVisible(buttonEmoticon1.By)).Click();
+            Waiter.ExplicitWaitWithCondition(20, ExpectedConditions.ElementIsVisible(buttonEmoticon2.By)).Click();
+            Thread.Sleep(1000);
+            Waiter.ExplicitWaitWithCondition(20, ExpectedConditions.ElementToBeClickable(buttonSend.By)).Click();
         }
     }
     
